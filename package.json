@@ -2,6 +2,8 @@
   "name": "jefiler",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
+  "main": "./src/main.js",
   "dependencies": {
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
@@ -26,6 +28,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "electron": "^3.0.5",
     "redux-devtools": "^3.4.1"
   }
 }

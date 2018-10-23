@@ -1,20 +1,21 @@
-import Fs from 'fs';
-import Path from 'Path';
+// import fs from 'fs';
+// import ps from 'path';
 
-const walk = (path, f) => {
-  Fs.readdir(path, (error, files) => {
+export const walk = (path, f) => {
+  const fs = window.require('fs');
+  const ps = window.require('path');
+
+  fs.readdir(path, (error, files) => {
     if (error)
       throw error;
     for (const file of files) {
-      const filePath = Path.join(path, file);
-      Fs.stat(filePath, (error, stats) => {
+      const filePath = ps.join(path, file);
+      fs.stat(filePath, (error, stats) => {
         if (stats.isDirectory())
           walk(filePath, f);
-        else
+        else if (f != null)
           f(filePath, stats);
       });
     }
   });
 }
-
-export default walk;

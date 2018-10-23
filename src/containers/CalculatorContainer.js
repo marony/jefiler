@@ -7,10 +7,16 @@ import NumBtn from '../components/NumBtn';
 import PlusBtn from '../components/PlusBtn';
 import ResultText from '../components/ResultText';
 
+import { walk } from '../util/file';
+
 // calculator container
 // class component
 class CalculatorContainer extends Component {
   render() {
+    const files = walk('C:\\Users\\tada\\tmp', console.log);
+    for (var f of files)
+      console.log(`${f}\n`);
+
     const { calculator, actions } = this.props;
     return (
       <div>
