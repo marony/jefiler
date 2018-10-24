@@ -13,13 +13,12 @@ import { walk } from '../util/file';
 // class component
 class CalculatorContainer extends Component {
   render() {
-    const files = walk('C:\\Users\\tada\\tmp', console.log);
-    for (var f of files)
-      console.log(`${f}\n`);
+    const files = walk('./src/', console.log);
 
     const { calculator, actions } = this.props;
     return (
       <div>
+        <button onClick={() => actions.onTest()}>TEST</button>
         <div>
           <NumBtn n={1} onClick={() => actions.onNumClick(1)} />
           <NumBtn n={2} onClick={() => actions.onNumClick(2)} />

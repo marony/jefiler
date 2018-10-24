@@ -25,3 +25,10 @@ export const onPlusClick = () => {
     type: actionTypes.PLUS,
   });
 }
+
+export const onTest = () => {
+  console.log(`onTest: ${this}`);
+  return ({
+    type: actionTypes.TEST_REQUEST,
+  })
+}
