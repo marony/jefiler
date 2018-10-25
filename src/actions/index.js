@@ -2,33 +2,64 @@ import * as actionTypes from './action-types';
 
 // action creators
 
-// push a number button
-// export const onNumClick = (number) => ({
-//   type: actionTypes.INPUT_NUMBER,
-//   number,
-// });
-export const onNumClick = (number) => {
-  console.log(`onNumClick: ${this}`);
+// application initialize request
+export const initialize = () => {
+  console.log(`initialize: ${this}`);
   return ({
-    type: actionTypes.INPUT_NUMBER,
-    number,
+    type: actionTypes.INITIALIZE,
   })
 };
 
-// push a plus button
-// export const onPlusClick = () => ({
-//   type: actionTypes.PLUS,
-// });
-export const onPlusClick = () => {
-  console.log(`onPlusClick: ${this}`);
+// application initialize completed
+export const initialized = (files) => {
+  console.log(`initialized: ${this}`);
   return ({
-    type: actionTypes.PLUS,
+    type: actionTypes.INITIALIZED,
+    files: files,
+  })
+};
+
+// show directory tree
+export const showTree = (tree) => {
+  console.log(`showTree: ${this}, tree = ${JSON.stringify(tree)}`);
+  return ({
+    type: actionTypes.SHOW_TREE,
+    tree: tree
   });
 }
 
-export const onTest = () => {
-  console.log(`onTest: ${this}`);
+// open directory tree
+export const openTree = (treeItem) => {
+  console.log(`openTree: ${this}, treeItem = ${JSON.stringify(treeItem)}`);
   return ({
-    type: actionTypes.TEST_REQUEST,
+    type: actionTypes.OPEN_TREE,
+    treeItem: treeItem,
   })
+}
+
+// open directory tree
+export const closeTree = (treeItem) => {
+  console.log(`closeTree: ${this}, treeItem = ${JSON.stringify(treeItem)}`);
+  return ({
+    type: actionTypes.CLOSE_TREE,
+    treeItem: treeItem,
+  })
+}
+
+// show file list
+export const showList = (files) => {
+  console.log(`showList: ${this}, files = ${JSON.stringify(files)}`);
+  return ({
+    type: actionTypes.SHOW_LIST,
+    files: files,
+  });
+}
+
+// onClick file in list
+export const onClickFile = (file) => {
+  console.log(`onClickFile: ${this}, file = ${JSON.stringify(file)}`);
+  return ({
+    type: actionTypes.CLICK_LIST_FILE,
+    file: file,
+  });
 }

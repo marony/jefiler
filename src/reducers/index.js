@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
-import calculator from './calculator';
+import filer from './filer';
 
 // combine all reducers
-const reducer = combineReducers({
-  calculator,
+const rootReducer = combineReducers({
+  filer,
 });
 
-export default reducer;
+export default rootReducer;

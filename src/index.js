@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import CalculatorContainer from './containers/CalculatorContainer';
+import FilerContainer from './containers/FilerContainer';
 import configureStore from './store';
 
 const store = configureStore();
@@ -10,7 +10,7 @@ const store = configureStore();
 // setup store and render application container
 render(
   <Provider store={store}>
-    <CalculatorContainer />
+    <FilerContainer />
   </Provider>,
   document.getElementById('root')
 );

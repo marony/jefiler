@@ -1,16 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// plus botton component
-// function component
-// const PlusBtn = ({ onClick }) => (
-//   <button onClick={onClick}>+</button>
-// );
-
+// tree directory item
 // class component
-class PlusBtn extends React.Component {
+class TreeItem extends React.Component {
   render() {
-    const { onClick } = this.props;
+    const { treeItem, onClick } = this.props;
     return (
       <button onClick={onClick}>+</button>
     );
@@ -19,7 +14,8 @@ class PlusBtn extends React.Component {
 
 // parameter type declations
 PlusBtn.propTypes = {
+  treeItem: PropTypes.object.isRequired,
   onClick: PropTypes.func.isRequired,
 };
 
-export default PlusBtn;
+export default TreeItem;

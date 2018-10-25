@@ -1,21 +1,87 @@
 // import fs from 'fs';
 // import ps from 'path';
 
-export const walk = (path, f) => {
+/*
+export function walk2(path, done) {
   const fs = window.require('fs');
   const ps = window.require('path');
 
-  fs.readdir(path, (error, files) => {
-    if (error)
-      throw error;
-    for (const file of files) {
-      const filePath = ps.join(path, file);
-      fs.stat(filePath, (error, stats) => {
-        if (stats.isDirectory())
-          walk(filePath, f);
-        else if (f != null)
-          f(filePath, stats);
+  let r = [];
+  fs.readdir(path, (error, list) => {
+    if (error) return done(error);
+
+    var pending = list.length;
+    if (!pending) return done(null, r);
+
+    for (let file of list) {
+      file = ps.resolve(path, file);
+
+      fs.stat(file, (error, stat) => {
+        if (stat && stat.isDirectory()) {
+          walk(file, (error, res) => {
+            r = r.concat(res);
+            if (!--pending) done(null, r);
+          });
+        } else {
+          r.push(file);
+          if (!--pending) done(null, r);
+        }
       });
     }
   });
 }
+*/
+
+// get files and directories in given path recursively
+const readdirAsync = (dir) => {
+    const fs = window.require('fs');
+
+    return new Promise((resolve, reject) => {
+        fs.readdir(dir, (error, list) => {
+            if (error) {
+                reject(error);
+            } else {
+                resolve(list);
+            }
+        });
+    });
+}
+
+// get file status
+const statAsync = (file) => {
+    const fs = window.require('fs');
+
+    return new Promise((resolve, reject) => {
+        fs.stat(file, (error, stat) => {
+            if (error) {
+                reject(error);
+            } else {
+                resolve(stat);
+            }
+        });
+    });
+}
+
+// inner function
+export function walk(path) {
+    const ps = window.require('path');
+    const fs = window.require('fs');
+
+    return readdirAsync(path).then((list) => {
+        return Promise.all(list.map((file) => {
+            file = ps.resolve(path, file);
+            return statAsync(file).then((stat) => {
+                if (stat.isDirectory()) {
+                    return walk(file);
+                } else {
+                    return file;
+                }
+            });
+        }));
+    }).then((results) => {
+        // flatten the array of arrays
+        return Array.prototype.concat.apply([], results);
+    });
+}
+
+// process.env[process.platform == "win32" ? "USERPROFILE" : "HOME"]

@@ -1,9 +1,14 @@
 // declations of action type constants
 
-// push a number button
-export const INPUT_NUMBER = 'INPUT_NUMBER';
-// push a plus button
-export const PLUS = 'PLUS';
+// application actions(processed by redux-sage)
+export const INITIALIZE = 'INITIALIZE';
+export const INITIALIZED = 'INITIALIZED';
 
-// redux-saga test request
-export const TEST_REQUEST = 'TEST_REQUEST';
+// directory tree actions
+export const SHOW_TREE = 'SHOW_TREE';
+export const OPEN_TREE = 'OPEN_TREE';
+export const CLOSE_TREE = 'CLOSE_TREE';
+
+// file list actions
+export const SHOW_LIST = 'SHOW_LIST';
+export const CLICK_LIST_FILE = 'CLICK_LIST_FILE';
