@@ -12,6 +12,7 @@ const initialAppState = {
 const filer = (state = initialAppState, action) => {
     // action type to action creators mapping
     const actionCreators = {
+        [actionTypes.INITIALIZED]: showList,
         [actionTypes.SHOW_TREE]: showTree,
         [actionTypes.OPEN_TREE]: openTree,
         [actionTypes.CLOSE_TREE]: closeTree,

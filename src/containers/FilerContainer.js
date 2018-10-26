@@ -3,10 +3,10 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
 import * as actions from '../actions';
-import Tree from '../components/Tree';
-import List from '../components/List';
+import {TreeContainer} from './TreeContainer'
+import {ListContainer} from './ListContainer'
 
-// calculator container
+// filer container
 // class component
 class FilerContainer extends Component {
     componentDidMount() {
@@ -21,17 +21,16 @@ class FilerContainer extends Component {
     }
 
     render() {
-        const {calculator, actions} = this.props;
+        const {filer} = this.props;
+        const {files, file, tree, treeItem} = filer;
+
         return (
             <div>
-                <button onClick={() => actions.onTest()}>TEST</button>
                 <div>
-                    {/* ツリーの状態によって開閉のアクションを切り替える？？？(TreeではなくTreeItemに設定するのでは？) */}
-                    <Tree n={1} onClick={() => actions.onNumClick(1)}/>
+                    <TreeContainer/>
                 </div>
                 <div>
-                    {/* ファイルをクリックしたアクション(ListではなくListItemに設定するのでは？) */}
-                    <List n={2} onClick={() => actions.onNumClick(2)}/>
+                    <ListContainer files={files}/>
                 </div>
             </div>
         );

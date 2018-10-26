@@ -1,21 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {ListItem} from './ListItem';
 
 // file list
 // class component
-class List extends React.Component {
+export class List extends React.Component {
     render() {
-        const {files, onClick} = this.props;
+        const {files} = this.props;
+        for (let file of files)
+            console.log(file);
         return (
-            <button onClick={onClick}>{1}</button>
+            <div>
+                {files.map((file) => {
+                    return <ListItem file={file}/>
+                })}
+            </div>
         );
     }
 }
 
-// parameter type declations
+// parameter file list declaration
 List.propTypes = {
     files: PropTypes.object.isRequired,
     onClick: PropTypes.func.isRequired,
 };
-
-export default List;

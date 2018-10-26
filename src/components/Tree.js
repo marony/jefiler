@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 // directory tree
 // class component
-class Tree extends React.Component {
+export class Tree extends React.Component {
     render() {
         const {tree, onClick} = this.props;
         return (
@@ -12,10 +12,8 @@ class Tree extends React.Component {
     }
 }
 
-// parameter type declations
+// parameter type declaration
 Tree.propTypes = {
     tree: PropTypes.object.isRequired,
     onClick: PropTypes.func.isRequired,
 };
-
-export default Tree;

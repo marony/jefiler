@@ -1,21 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// file list item
+// file item
 // class component
-class ListItem extends React.Component {
+export class ListItem extends React.Component {
     render() {
-        const {file, onClick} = this.props;
+        const {file} = this.props;
+
         return (
-            <button onClick={onClick}>+</button>
+            <div>
+                <li>{file}</li>
+            </div>
         );
     }
 }
 
-// parameter type declations
+// parameter type declaration
 ListItem.propTypes = {
     file: PropTypes.object.isRequired,
     onClick: PropTypes.func.isRequired,
 };
-
-export default ListItem;
