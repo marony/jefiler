@@ -84,4 +84,4 @@ export function walk(path) {
     });
 }
 
-// process.env[process.platform == "win32" ? "USERPROFILE" : "HOME"]
+// TODO: process.env[process.platform == "win32" ? "USERPROFILE" : "HOME"]
