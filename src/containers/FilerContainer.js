@@ -5,6 +5,11 @@ import {bindActionCreators} from 'redux';
 import * as actions from '../actions';
 import {TreeContainer} from './TreeContainer'
 import {ListContainer} from './ListContainer'
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 
 // filer container
 // class component
@@ -25,14 +30,23 @@ class FilerContainer extends Component {
         const {files, file, tree, treeItem} = filer;
 
         return (
-            <div>
-                <div>
-                    <TreeContainer/>
-                </div>
-                <div>
-                    <ListContainer files={files}/>
-                </div>
-            </div>
+            <MuiThemeProvider>
+                <AppBar position="static" color="default">
+                    <Toolbar>
+                        <Typography variant="title" color="inherit">
+                            jefiler
+                        </Typography>
+                    </Toolbar>
+                </AppBar>
+                <Grid container>
+                    <Grid item xs={4}>
+                        <TreeContainer/>
+                    </Grid>
+                    <Grid item xs={8}>
+                        <ListContainer files={files}/>
+                    </Grid>
+                </Grid>
+            </MuiThemeProvider>
         );
     }
 }
