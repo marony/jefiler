@@ -54,7 +54,6 @@ class FilerContainer extends Component {
 }
 
 const mapState = (state, ownProps) => {
-    console.log(`mapState: ${JSON.stringify(state)}`);
     return ({
         filer: state.filer,
     })

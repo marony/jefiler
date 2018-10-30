@@ -9,8 +9,6 @@ import {ListItem} from './ListItem';
 export class List extends React.Component {
     render() {
         const {files} = this.props;
-        for (let file of files)
-            console.log(file);
         return (
             <div>
                 {files.map((file) => {

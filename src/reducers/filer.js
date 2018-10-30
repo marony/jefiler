@@ -24,7 +24,7 @@ const filer = (state = initialAppState, action) => {
 
     if (action.type in actionCreators) {
         const actionCreator = actionCreators[action.type](state, action);
-        console.log(`reducer: ${action.type} -> ${actionCreator}`);
+        console.log(`reducer: ${action.type} -> ${JSON.stringify(actionCreator)}`);
         return actionCreator;
     }
     return state;
