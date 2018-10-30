@@ -1,5 +1,7 @@
 // declations of action type constants
 
+'use strict';
+
 // application actions(processed by redux-sage)
 export const INITIALIZE = 'INITIALIZE';
 export const INITIALIZED = 'INITIALIZED';

@@ -1,3 +1,5 @@
+'use strict';
+
 import * as actionTypes from '../actions/action-types';
 
 // initial state
@@ -20,8 +22,11 @@ const filer = (state = initialAppState, action) => {
         [actionTypes.CLICK_LIST_FILE]: clickFile,
     };
 
-    if (action.type in actionCreators)
-        return actionCreators[action.type](state, action);
+    if (action.type in actionCreators) {
+        const actionCreator = actionCreators[action.type](state, action);
+        console.log(`reducer: ${action.type} -> ${actionCreator}`);
+        return actionCreator;
+    }
     return state;
 };
 
@@ -53,6 +58,7 @@ const closeTree = (state, action) => {
 
 // show files list
 const showList = (state, action) => {
+    action.files.forEach(console.log);
     return {
         ...state,
         files: action.files,

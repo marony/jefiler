@@ -1,6 +1,10 @@
+'use strict';
+
 import * as actionTypes from './action-types';
 
 // action creators
+
+// TODO: action.payloadに名前を統一する
 
 // application initialize request
 export const initialize = () => {

@@ -1,3 +1,5 @@
+'use strict';
+
 // import fs from 'fs';
 // import ps from 'path';
 
@@ -45,30 +47,31 @@ const readdirAsync = (dir) => {
             }
         });
     });
-}
+};
 
 // get file status
 const statAsync = (file) => {
     const fs = window.require('fs');
 
     return new Promise((resolve, reject) => {
+        // console.log(`statAsync1: ${file}`);
         fs.stat(file, (error, stat) => {
             if (error) {
+                // console.log(`statAsync2: ${file}, ${error}`);
                 reject(error);
             } else {
                 resolve(stat);
             }
         });
     });
-}
+};
 
-// inner function
+// walk directories recursively
 export function walk(path) {
     const ps = window.require('path');
-    const fs = window.require('fs');
 
-    return readdirAsync(path).then((list) => {
-        return Promise.all(list.map((file) => {
+    return readdirAsync(path).then(list => {
+        return Promise.all(list.map(file => {
             file = ps.resolve(path, file);
             return statAsync(file).then((stat) => {
                 if (stat.isDirectory()) {
@@ -76,6 +79,8 @@ export function walk(path) {
                 } else {
                     return file;
                 }
+            }).catch(error => {
+                // console.log(`ERROR: ${file}, ${error}`);
             });
         }));
     }).then((results) => {
@@ -84,4 +89,19 @@ export function walk(path) {
     });
 }
 
-// TODO: process.env[process.platform == "win32" ? "USERPROFILE" : "HOME"]
+export function homeDir() {
+    // TODO: i cannot get home directory
+    // const osenv = window.require('osenv');
+    //
+    // return osenv.home();
+
+    // return process.env[process.platform == "win32" ? "USERPROFILE" : "HOME"]
+
+    // const {app} = window.require('electron');
+    // console.log(app);
+    // const r =  app.getPath('home');
+    // console.log(r);
+    // return r;
+
+    return './src';
+}

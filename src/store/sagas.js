@@ -1,16 +1,19 @@
+'use strict';
+
 import {call, put, takeEvery, takeLatest} from 'redux-saga/effects'
 import * as actionTypes from '../actions/action-types';
-import {walk} from '../util/file';
+import {walk, homeDir} from '../util/file';
 
 function* initialize() {
-    const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
-
     let _files = null;
     const _walk = () => {
-        return walk('./src/')
+        const home = homeDir();
+        console.log(`home: ${home}, ${process.platform}`);
+        return walk(home)
             .then(files => {
                 _files = files;
             })
+            .catch(console.log);
     }
 
     yield call(_walk);

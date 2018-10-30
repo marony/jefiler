@@ -5,8 +5,8 @@
   "homepage": ".",
   "main": "./src/main.js",
   "dependencies": {
-    "@types/react-tap-event-plugin": "0.0.30",
     "@material-ui/core": "^3.3.1",
+    "@types/react-tap-event-plugin": "0.0.30",
     "prop-types": "^15.6.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
@@ -32,7 +32,8 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "electron": "^3.0.5",
+    "create-react-app": "^2.1.0",
+    "electron": "^3.0.6",
     "redux-devtools": "^3.4.1"
   }
 }
