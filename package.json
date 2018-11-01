@@ -2,8 +2,8 @@
   "name": "jefiler",
   "version": "0.1.0",
   "private": true,
-  "homepage": ".",
-  "main": "./src/main.js",
+  "homepage": "./",
+  "main": "./src/electron-starter.js",
   "dependencies": {
     "@material-ui/core": "^3.3.1",
     "@types/react-tap-event-plugin": "0.0.30",
@@ -20,7 +20,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "electron": "npx electron .",
+    "dev": "nf start"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -34,6 +36,7 @@
   "devDependencies": {
     "create-react-app": "^2.1.0",
     "electron": "^3.0.6",
+    "foreman": "^3.0.1",
     "redux-devtools": "^3.4.1"
   }
 }
